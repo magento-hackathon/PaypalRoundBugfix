@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Hackathon_PaypalRoundBugfix>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Paypal/>
+            </depends>
+        </Hackathon_PaypalRoundBugfix>
+    </modules>
+</config>

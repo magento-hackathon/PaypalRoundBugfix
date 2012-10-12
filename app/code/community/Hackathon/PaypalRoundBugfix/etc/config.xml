@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<config>
+    <modules>
+        <Hackathon_PaypalRoundBugfix>
+            <version>0.1.0</version>
+        </Hackathon_PaypalRoundBugfix>
+    </modules>
+    <global>
+        <models>
+            <hackathon_paypalroundbugfix>
+                <class>Hackathon_PaypalRoundBugfix_Model</class>
+            </hackathon_paypalroundbugfix>
+            <paypal>
+                <rewrite>
+                    <!-- Mage_Paypal_Model_Ipn -->
+                    <!-- Hackathon_PaypalRoundBugfix_Model_Paypal_Ipn -->
+                    <ipn>Hackathon_PaypalRoundBugfix_Model_Paypal_Ipn</ipn>
+                </rewrite>
+            </paypal>
+        </models>
+        <blocks>
+            <hackathon_paypalroundbugfix>
+                <class>Hackathon_PaypalRoundBugfix_Block</class>
+            </hackathon_paypalroundbugfix>
+            <paypal>
+                <rewrite>
+                    <!-- Mage_Paypal_Block_Standard_Redirect -->
+                    <!-- Hackathon_PaypalRoundBugfix_Block_Paypal_Standard_Redirect -->
+                    <standard_redirect>Hackathon_PaypalRoundBugfix_Block_Paypal_Standard_Redirect</standard_redirect>
+                </rewrite>
+            </paypal>
+        </blocks>
+    </global>
+    <phpunit>
+        <suite>
+            <modules>
+                <Hackathon_PaypalRoundBugfix/>
+            </modules>
+        </suite>
+    </phpunit>
+</config>
