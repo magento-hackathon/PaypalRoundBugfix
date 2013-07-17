@@ -1,7 +1,7 @@
 #Hackathon_PaypalRoundBugfix
 
-This module rewrites a block of Mage_Paypal. The only the whole BaseGrandTotal is submitted to Paypal now. This works ONLY with "transfer cart line items" set to false.
-The Paypal-Response is often in conflict with the order-data. By rewriting the Payment Method there is now a tolerance of less than one cent. It should also be possible with a tolerance of less than half of a cent.
+This module rewrites a block of Mage_Paypal. Only the whole BaseGrandTotal is submitted to Paypal now. This works ONLY with "transfer cart line items" set to false.
+The Paypal-Response is often in conflict with the order-data. By rewriting the Payment Method there is now a tolerance of less than one cent. It should also be possible with a tolerance of less than half of a cent but I didn't dare to try it on production.
 And it removes the functionality to refund orders with paypal, because there are bugs in it.
 
 ##For Developers
