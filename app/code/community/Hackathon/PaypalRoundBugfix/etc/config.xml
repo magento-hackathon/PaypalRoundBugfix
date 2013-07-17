@@ -18,6 +18,16 @@
                     <ipn>Hackathon_PaypalRoundBugfix_Model_Paypal_Ipn</ipn>
                 </rewrite>
             </paypal>
+            <sales>
+                <rewrite>
+                    <order_payment>Hackathon_PaypalRoundBugfix_Model_Order_Payment</order_payment>
+                </rewrite>
+            </sales>
+            <core>
+                <rewrite>
+                    <store>Hackathon_PaypalRoundBugfix_Model_Store</store>
+                </rewrite>
+            </core>
         </models>
         <blocks>
             <hackathon_paypalroundbugfix>

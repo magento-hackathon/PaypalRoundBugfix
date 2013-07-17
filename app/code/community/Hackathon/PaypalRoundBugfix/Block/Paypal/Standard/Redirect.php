@@ -5,6 +5,10 @@ class Hackathon_PaypalRoundBugfix_Block_Paypal_Standard_Redirect
 {
     protected function _toHtml()
     {
+        if (Mage::getStoreConfig('payment/paypal_standard/line_items_enabled')) {
+            return parent::_toHtml();
+        }
+
         $standard = Mage::getModel('paypal/standard');
 
         $form = new Varien_Data_Form();
@@ -16,49 +20,14 @@ class Hackathon_PaypalRoundBugfix_Block_Paypal_Standard_Redirect
 
         $fields = $standard->getStandardCheckoutFormFields();
 
-        $sumOne = (float)$fields["amount"] +
-        (float)$fields["tax"] - (float)$fields["discount_amount"];
+        $orderIncrementId = Mage::getModel('checkout/session')->getLastRealOrderId();
+        $order = Mage::getModel('sales/order')->loadByIncrementId($orderIncrementId);
 
-        $sumTwo = 0;
-        if (isset($fields["amount_1"])) {
-            $sumTwo += (float)$fields["amount_1"];
-        }
-        if (isset($fields["amount_2"])) {
-            $sumTwo += (float)$fields["amount_2"];
-        }
-        if (isset($fields["amount_3"])) {
-            $sumTwo += (float)$fields["amount_3"];
-        }
-        if (isset($fields["amount_4"])) {
-            $sumTwo += (float)$fields["amount_4"];
-        }
-        if (isset($fields["amount_5"])) {
-            $sumTwo += (float)$fields["amount_5"];
-        }
-        if (isset($fields["amount_6"])) {
-            $sumTwo += (float)$fields["amount_6"];
-        }
-        if (isset($fields["amount_7"])) {
-            $sumTwo += (float)$fields["amount_7"];
-        }
-        if (isset($fields["amount_8"])) {
-            $sumTwo += (float)$fields["amount_8"];
-        }
-        if (isset($fields["amount_9"])) {
-            $sumTwo += (float)$fields["amount_9"];
-        }
-        if (isset($fields["amount_10"])) {
-            $sumTwo += (float)$fields["amount_10"];
-        }
-        $sumTwo += (float)$fields["tax_cart"] -
-        (float)$fields["discount_amount_cart"];
+        $fields['discount_amount'] = (string)(float) '0.0';
+        $fields['shipping'] = (string)(float) '0.0';
+        $fields['tax'] = (string)(float) '0.0';
+        $fields['amount'] = (string)(float) $order->getBaseGrandTotal();
 
-        //Wird noch programmatisch gelöst,
-        // bisher nur 10 Artikel hardcoded, deshalb Bremse
-        if ($sumOne <> $sumTwo && !array_key_exists('amount_11', $fields)) {
-            $fields["amount_1"] =
-            (string)(float)$fields["amount_1"] + ($sumOne - $sumTwo);
-        }
 
         foreach ($fields as $field => $value) {
             $form->addField(
