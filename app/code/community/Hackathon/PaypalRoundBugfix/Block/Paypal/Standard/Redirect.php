@@ -23,10 +23,10 @@ class Hackathon_PaypalRoundBugfix_Block_Paypal_Standard_Redirect
         $orderIncrementId = Mage::getModel('checkout/session')->getLastRealOrderId();
         $order = Mage::getModel('sales/order')->loadByIncrementId($orderIncrementId);
 
-        $fields['discount_amount'] = (string)(float) '0.0';
-        $fields['shipping'] = (string)(float) '0.0';
-        $fields['tax'] = (string)(float) '0.0';
-        $fields['amount'] = (string)(float) $order->getBaseGrandTotal();
+        $fields['discount_amount'] =  '0.00';
+        $fields['shipping'] =  '0.00';
+        $fields['tax'] = '0.00';
+        $fields['amount'] = number_format((float) $order->getBaseGrandTotal(),2);
 
 
         foreach ($fields as $field => $value) {
