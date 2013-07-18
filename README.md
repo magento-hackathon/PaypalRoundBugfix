@@ -8,13 +8,18 @@ And it removes the functionality to refund orders with paypal, because there are
 
 We rewrite
 
-    Mage_Paypal_Model_Ipn with Hackathon_PaypalRoundBugfix_Model_Paypal_Ipn
-    Mage_Sales_Model_Order_Payment with Hackathon_PaypalRoundBugfix_Model_Order_Payment
-    Mage_Paypal_Block_Standard_Redirect with Hackathon_PaypalRoundBugfix_Block_Paypal_Standard_Redirect
-    Mage_Core_Model_Store with Hackathon_PaypalRoundBugfix_Model_Store
+    Mage_Paypal_Model_Ipn with Hackathon_PaypalRoundBugfix_Model_Paypal_Ipn,
+    Mage_Sales_Model_Order_Payment with Hackathon_PaypalRoundBugfix_Model_Order_Payment,
+    Mage_Paypal_Block_Standard_Redirect with Hackathon_PaypalRoundBugfix_Block_Paypal_Standard_Redirect,
+    Mage_Core_Model_Store with Hackathon_PaypalRoundBugfix_Model_Store.
 
 We know, that rewriting is the worst strategy here. Please tell us, if there are some useful events. We didn't found any. The rewriting of Mage_Core_Model_Store sounds very hard. We must check, if there is another solution for this.
-    
+
+If you don't care about the one Cent and are just annoyed of the "Suspected Fraud"-Status, you ONLY need one class. Just rewrite
+
+    Mage_Sales_Model_Order_Payment with Hackathon_PaypalRoundBugfix_Model_Order_Payment,
+
+and set ``transfer_cart_line_items`` to false.
 
 ## Tested
 I added two Unittests to be sure that the files are rewritten. Further tests follow. TDD was kind of hard to test Paypal-specific transactions.
