@@ -21,7 +21,7 @@ class Hackathon_PaypalRoundBugfix_Test_Config_RewriteTest
     }
 
     /**
-     * Test wether the Ipn model is rewritten
+     * Test wether the Store model is rewritten
      *
      * @test
      */
