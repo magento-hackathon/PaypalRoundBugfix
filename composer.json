@@ -1,0 +1,22 @@
+{
+    "name": "firegento/paypal-rounding-bugfix",
+    "license": "GPL-3.0",
+    "type": "magento-module",
+    "description": "Solves PaypalBug in Magento 1.7",
+    "homepage": "https://github.com/magento-hackathon/PaypalRoundBugfix",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    },
+    "authors": [
+        {
+            "name": "Andreas Vogt",
+            "email": "andreas.vogt@webvisum.de"
+        },{
+            "name": "Fabian Blechschmidt",
+            "email": "blechschmidt@fabian-blechschmidt.de"
+        },{
+            "name": "Richard Vogel",
+            "email": "github@richard-rockt.de"
+        }
+    ]
+}
